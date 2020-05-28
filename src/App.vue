@@ -5,23 +5,32 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'App',
   components: {
 
+  },
+  mounted(){
+    this.getUser();
+    this.getCartCount()
+  },
+  methods:{
+    getUser(){
+      this.axios.get('/user').then(()=>{
+        //todo 存到Vuex中
+      })
+    },
+    getCartCount(){
+      this.axios.get('/carts/products/sum').then(()=>{
+        //todo 存到Vuex中
+      })
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import './assets/scss/reset.scss';
+@import './assets/scss/config.scss';
+@import './assets/scss/button.scss';
 </style>
